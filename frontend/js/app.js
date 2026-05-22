@@ -1,0 +1,4 @@
+carregarSignos();
+carregarSelects();
+carregarPerfil();
+carregarPergunta();

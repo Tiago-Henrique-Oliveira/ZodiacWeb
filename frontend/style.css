@@ -1,0 +1,523 @@
+
+* {
+
+  margin: 0;
+
+  padding: 0;
+
+  box-sizing: border-box;
+
+  font-family: Arial, sans-serif;
+
+}
+
+body {
+
+  background:
+    linear-gradient(
+      180deg,
+      #020617,
+      #0f172a
+    );
+
+  color: white;
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+}
+
+header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 25px 40px;
+
+  background:
+    rgba(15,23,42,0.95);
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 999;
+
+  border-bottom:
+    1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(10px);
+
+}
+
+.logo h1 {
+
+  color: #facc15;
+
+  font-size: 42px;
+
+}
+
+.hero {
+
+  padding: 80px 20px;
+
+}
+
+.hero-content {
+
+  max-width: 1200px;
+
+  margin: auto;
+
+  background:
+    linear-gradient(
+      135deg,
+      #1e293b,
+      #0f172a
+    );
+
+  border-radius: 28px;
+
+  padding: 50px;
+
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.3);
+
+  animation:
+    fadeUp 1s ease;
+
+}
+
+.hero h2 {
+
+  font-size: 48px;
+
+  margin-bottom: 15px;
+
+}
+
+.hero p {
+
+  font-size: 20px;
+
+  opacity: 0.8;
+
+}
+
+main {
+
+  max-width: 1200px;
+
+  margin: auto;
+
+  padding: 20px;
+
+}
+
+#painelUsuario {
+
+  max-width: 1200px;
+
+  margin: 20px auto;
+
+  padding: 20px;
+
+  background:
+    rgba(255,255,255,0.05);
+
+  border-radius: 22px;
+
+  display: none;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+
+  border:
+    1px solid rgba(255,255,255,0.06);
+
+}
+
+.usuario-info h2 {
+
+  color: #facc15;
+
+  margin-bottom: 5px;
+
+}
+
+.card {
+
+  width: 100%;
+
+  background:
+    rgba(30,41,59,0.75);
+
+  border-radius: 24px;
+
+  padding: 30px;
+
+  margin-bottom: 30px;
+
+  box-shadow:
+    0 6px 30px rgba(0,0,0,0.25);
+
+  animation:
+    fadeUp 0.7s ease;
+
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+
+}
+
+.card:hover {
+
+  transform:
+    translateY(-5px);
+
+  box-shadow:
+    0 12px 30px rgba(0,0,0,0.3);
+
+}
+
+.card h2 {
+
+  margin-bottom: 25px;
+
+  font-size: 32px;
+
+}
+
+input,
+select {
+
+  width: 100%;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  background: #f8fafc;
+
+  font-size: 15px;
+
+  outline: none;
+
+}
+
+button {
+
+  border: none;
+
+  border-radius: 14px;
+
+  padding: 14px 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #facc15,
+      #f59e0b
+    );
+
+  color: black;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+
+}
+
+button:hover {
+
+  transform:
+    translateY(-3px);
+
+  box-shadow:
+    0 10px 20px rgba(250,204,21,0.3);
+
+}
+
+.form-grid,
+.compatibilidade-grid,
+.descobrir-signo,
+.quiz-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+
+  gap: 15px;
+
+}
+
+#resultadoSigno,
+#resultadoCompatibilidade,
+#resultadoQuiz {
+
+  margin-top: 20px;
+
+  padding: 20px;
+
+  border-radius: 18px;
+
+  background:
+    rgba(255,255,255,0.04);
+
+  font-size: 20px;
+
+  color: #facc15;
+
+  font-weight: bold;
+
+  border:
+    1px solid rgba(255,255,255,0.05);
+
+}
+
+#horoscopoResultado {
+
+  margin-top: 20px;
+
+  padding: 20px;
+
+  background:
+    rgba(255,255,255,0.04);
+
+  border-radius: 18px;
+
+  line-height: 1.7;
+
+  border:
+    1px solid rgba(255,255,255,0.05);
+
+  font-size: 18px;
+
+  width: 100%;
+
+}
+
+.grid-signos {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(180px, 1fr));
+
+  gap: 20px;
+
+}
+
+.signo-item {
+
+  background:
+    rgba(255,255,255,0.05);
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  transition:
+    0.35s ease;
+
+}
+
+.signo-item:hover {
+
+  transform:
+    scale(1.03)
+    translateY(-8px);
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,0.35);
+
+}
+
+.signo-item img {
+
+  width: 100%;
+
+  height: 240px;
+
+  object-fit: cover;
+
+}
+
+.signo-item p {
+
+  padding: 15px;
+
+  text-align: center;
+
+  color: #facc15;
+
+  font-weight: bold;
+
+}
+
+.modal {
+
+  display: none;
+
+  position: fixed;
+
+  top: 0;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  background:
+    rgba(0,0,0,0.75);
+
+  justify-content: center;
+
+  align-items: center;
+
+  z-index: 99999;
+
+}
+
+.modal-content {
+
+  background:
+    #111827;
+
+  padding: 30px;
+
+  border-radius: 24px;
+
+  width: 90%;
+
+  max-width: 450px;
+
+}
+
+.fechar {
+
+  float: right;
+
+  cursor: pointer;
+
+  font-size: 22px;
+
+}
+
+.botao-musica {
+
+  border-radius: 50px;
+
+}
+
+@keyframes fadeUp {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(40px);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  header {
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    text-align: center;
+
+  }
+
+  .logo h1 {
+
+    font-size: 32px;
+
+  }
+
+  .hero {
+
+    padding: 40px 15px;
+
+  }
+
+  .hero-content {
+
+    padding: 35px;
+
+  }
+
+  .hero h2 {
+
+    font-size: 34px;
+
+  }
+
+  .hero p {
+
+    font-size: 17px;
+
+  }
+
+  .card {
+
+    padding: 22px;
+
+  }
+
+  .card h2 {
+
+    font-size: 26px;
+
+  }
+
+  .signo-item img {
+
+    height: 200px;
+
+  }
+
+  #painelUsuario {
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    text-align: center;
+
+  }
+
+}
