@@ -1,66 +1,187 @@
 const express = require("express");
+
+const mysql = require("mysql2");
+
 const cors = require("cors");
-const bcrypt = require("bcrypt");
-const db = require("./db");
+
+require("dotenv").config();
 
 const app = express();
 
 app.use(cors());
+
 app.use(express.json());
 
-app.post("/register", async (req, res) => {
-    const { nome, email, senha, signo } = req.body;
+const db = mysql.createConnection({
 
-    try {
-        const senhaHash = await bcrypt.hash(senha, 10);
+  host: process.env.DB_HOST,
 
-        const sql = "INSERT INTO usuarios (nome, email, senha, signo) VALUES (?, ?, ?, ?)";
+  user: process.env.DB_USER,
 
-        db.query(sql, [nome, email, senhaHash, signo], (err, result) => {
-            if (err) {
-                res.status(500).send(err);
-            } else {
-                res.send("Usuário cadastrado!");
-            }
+  password: process.env.DB_PASSWORD,
+
+  database: process.env.DB_NAME
+
+});
+
+db.connect((erro) => {
+
+  if (erro) {
+
+    console.log("❌ Erro MySQL:");
+
+    console.log(erro);
+
+    return;
+
+  }
+
+  console.log("✅ MySQL conectado!");
+
+});
+
+app.get("/", (req, res) => {
+
+  res.json({
+
+    mensagem:
+      "Servidor funcionando!"
+
+  });
+
+});
+
+app.post("/register", (req, res) => {
+
+  const {
+
+    nome,
+    email,
+    senha,
+    signo
+
+  } = req.body;
+
+  const sql =
+
+    `
+    INSERT INTO usuarios
+    (nome, email, senha, signo)
+    VALUES (?, ?, ?, ?)
+    `;
+
+  db.query(
+
+    sql,
+
+    [
+      nome,
+      email,
+      senha,
+      signo
+    ],
+
+    (erro, resultado) => {
+
+      if (erro) {
+
+        console.log(erro);
+
+        return res.status(500).json({
+
+          mensagem:
+            "Erro ao cadastrar!"
+
         });
 
-    } catch (erro) {
-        res.status(500).send(erro);
+      }
+
+      res.json({
+
+        mensagem:
+          "Cadastro realizado com sucesso!"
+
+      });
+
     }
+
+  );
+
 });
 
 app.post("/login", (req, res) => {
-    const { email, senha } = req.body;
 
-    const sql = "SELECT * FROM usuarios WHERE email = ?";
+  const {
 
-    db.query(sql, [email], async (err, result) => {
-        if (err) return res.status(500).send(err);
+    email,
+    senha
 
-        if (result.length === 0) {
-            return res.status(401).send("Usuário não encontrado");
-        }
+  } = req.body;
 
-        const usuario = result[0];
+  const sql =
 
-        const senhaValida = await bcrypt.compare(senha, usuario.senha);
+    `
+    SELECT * FROM usuarios
+    WHERE email = ?
+    AND senha = ?
+    `;
 
-        if (!senhaValida) {
-            return res.status(401).send("Senha incorreta");
-        }
+  db.query(
+
+    sql,
+
+    [
+      email,
+      senha
+    ],
+
+    (erro, resultado) => {
+
+      if (erro) {
+
+        console.log(erro);
+
+        return res.status(500).json({
+
+          mensagem:
+            "Erro no login!"
+
+        });
+
+      }
+
+      if (resultado.length > 0) {
 
         res.json({
-            mensagem: "Login realizado!",
-            usuario: {
-                nome: usuario.nome,
-                signo: usuario.signo
-            }
+
+          mensagem:
+            "Login realizado!"
+
         });
-    });
+
+      }
+
+      else {
+
+        res.status(401).json({
+
+          mensagem:
+            "Email ou senha incorretos!"
+
+        });
+
+      }
+
+    }
+
+  );
+
 });
 
-const PORT = process.env.PORT || 3000;
+app.listen(3000, () => {
 
-app.listen(PORT, () => {
-    console.log("Servidor rodando!");
-})
+  console.log(
+    "🚀 Servidor rodando na porta 3000!"
+  );
+
+});

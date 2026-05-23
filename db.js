@@ -2,18 +2,20 @@ require("dotenv").config();
 
 const mysql = require("mysql2");
 
+console.log(process.env.DB_PASSWORD);
+
 const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME
+  host: "localhost",
+  user: "root",
+  password: "Mileena26*",
+  database: "zodiacweb"
 });
 
 connection.connect(err => {
   if (err) {
     console.error("Erro:", err);
   } else {
-    console.log(" MySQL conectado!");
+    console.log("Conectado!");
   }
 });
 
