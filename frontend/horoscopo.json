@@ -1,0 +1,62 @@
+{
+    "Áries": {
+        "amor": "Momento intenso no amor.",
+        "trabalho": "Novas oportunidades surgindo.",
+        "saude": "Evite estresse excessivo."
+    },
+    "Touro": {
+        "amor": "Relacionamentos estáveis.",
+        "trabalho": "Foco e disciplina trarão resultados.",
+        "saude": "Cuide da alimentação."
+    },
+    "Gêmeos": {
+        "amor": "Comunicação será essencial.",
+        "trabalho": "Boas ideias surgirão.",
+        "saude": "Evite sobrecarga mental."
+    },
+    "Câncer": {
+        "amor": "Emoções à flor da pele, valorize o diálogo.",
+        "trabalho": "Evite decisões impulsivas.",
+        "saude": "Cuide do seu bem-estar emocional."
+    },
+    "Leão": {
+        "amor": "Romantismo em alta.",
+        "trabalho": "Reconhecimento pode surgir.",
+        "saude": "Mantenha o equilíbrio entre corpo e mente."
+    },
+    "Virgem": {
+        "amor": "Atenção aos detalhes fará diferença.",
+        "trabalho": "Organização será sua aliada.",
+        "saude": "Evite excesso de preocupação."
+    },
+    "Libra": {
+        "amor": "Harmonia nos relacionamentos.",
+        "trabalho": "Boas parcerias podem surgir.",
+        "saude": "Busque equilíbrio na rotina."
+    },
+    "Escorpião": {
+        "amor": "Intensidade e paixão em alta.",
+        "trabalho": "Momento de transformação.",
+        "saude": "Cuide do seu emocional."
+    },
+    "Sagitário": {
+        "amor": "Novas aventuras no amor.",
+        "trabalho": "Expansão e crescimento.",
+        "saude": "Pratique atividades físicas."
+    },
+    "Capricórnio": {
+        "amor": "Estabilidade emocional.",
+        "trabalho": "Resultados vêm com esforço.",
+        "saude": "Evite excesso de trabalho."
+    },
+    "Aquário": {
+        "amor": "Surpresas no campo afetivo.",
+        "trabalho": "Ideias inovadoras ganham espaço.",
+        "saude": "Cuide da saúde mental."
+    },
+    "Peixes": {
+        "amor": "Sensibilidade em destaque.",
+        "trabalho": "Use sua intuição.",
+        "saude": "Momento ideal para relaxar."
+    }
+}

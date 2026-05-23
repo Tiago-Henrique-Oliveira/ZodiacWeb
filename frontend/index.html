@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>ZodiacWeb</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  />
+
+</head>
+
+<body>
+
+  <header>
+
+    <div class="logo">
+
+      <h1>ZodiacWeb 🌌</h1>
+
+    </div>
+
+    <button
+      class="botao-musica"
+      onclick="toggleMusica()"
+    >
+
+      🎵 Música OFF
+
+    </button>
+
+  </header>
+
+  <section id="painelUsuario">
+
+    <div class="usuario-info">
+
+      <h2 id="nomeUsuario">
+        Usuário
+      </h2>
+
+      <p>
+        Bem-vindo ao ZodiacWeb ✨
+      </p>
+
+    </div>
+
+    <button onclick="logout()">
+
+      Sair
+
+    </button>
+
+  </section>
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h2>
+        Descubra seu universo zodiacal ✨
+      </h2>
+
+      <p>
+        Compatibilidade, horóscopo, quiz e muito mais!
+      </p>
+
+    </div>
+
+  </section>
+
+  <main>
+
+    <section class="card">
+
+      <h2>
+        🌙 Horóscopo do Dia
+      </h2>
+
+      <button onclick="gerarHoroscopo()">
+
+        Ver Horóscopo
+
+      </button>
+
+      <div id="horoscopoResultado">
+
+        Clique para descobrir
+        sua previsão ✨
+
+      </div>
+
+    </section>
+
+    <section class="card">
+
+      <h2>
+        🎮 Quiz Zodiacal
+      </h2>
+
+      <p>
+        Qual dessas qualidades mais combina com você?
+      </p>
+
+      <div class="quiz-grid">
+
+        <button onclick="resultadoQuiz('Áries')">
+          🔥 Coragem
+        </button>
+
+        <button onclick="resultadoQuiz('Touro')">
+          🌱 Persistência
+        </button>
+
+        <button onclick="resultadoQuiz('Gêmeos')">
+          🧠 Inteligência
+        </button>
+
+        <button onclick="resultadoQuiz('Câncer')">
+          💖 Emoção
+        </button>
+
+        <button onclick="resultadoQuiz('Leão')">
+          👑 Liderança
+        </button>
+
+        <button onclick="resultadoQuiz('Virgem')">
+          📚 Organização
+        </button>
+
+        <button onclick="resultadoQuiz('Libra')">
+          ⚖️ Diplomacia
+        </button>
+
+        <button onclick="resultadoQuiz('Escorpião')">
+          🦂 Intuição
+        </button>
+
+        <button onclick="resultadoQuiz('Sagitário')">
+          🏹 Aventura
+        </button>
+
+        <button onclick="resultadoQuiz('Capricórnio')">
+          💼 Responsabilidade
+        </button>
+
+        <button onclick="resultadoQuiz('Aquário')">
+          ✨ Originalidade
+        </button>
+
+        <button onclick="resultadoQuiz('Peixes')">
+          😍 Empatia
+        </button>
+
+      </div>
+
+      <div id="resultadoQuiz"></div>
+
+    </section>
+
+    <section class="card">
+
+      <h2>🔮 Descubra seu Signo</h2>
+
+      <div class="descobrir-signo">
+
+        <input
+          type="date"
+          id="dataNascimento"
+        />
+
+        <button onclick="descobrirSigno()">
+          Descobrir Signo
+        </button>
+
+      </div>
+
+      <div id="resultadoSigno"></div>
+
+    </section>
+
+    <section class="card">
+
+      <h2>📝 Cadastro</h2>
+
+      <div class="form-grid">
+
+        <input
+          type="text"
+          id="cadastroNome"
+          placeholder="Nome"
+        />
+
+        <input
+          type="email"
+          id="cadastroEmail"
+          placeholder="Email"
+        />
+
+        <input
+          type="password"
+          id="cadastroSenha"
+          placeholder="Senha"
+        />
+
+        <select id="cadastroSigno">
+
+          <option>Áries</option>
+          <option>Touro</option>
+          <option>Gêmeos</option>
+          <option>Câncer</option>
+          <option>Leão</option>
+          <option>Virgem</option>
+          <option>Libra</option>
+          <option>Escorpião</option>
+          <option>Sagitário</option>
+          <option>Capricórnio</option>
+          <option>Aquário</option>
+          <option>Peixes</option>
+
+        </select>
+
+      </div>
+
+      <button onclick="registrar()">
+        Cadastrar
+      </button>
+
+    </section>
+
+    <section class="card">
+
+      <h2>🔐 Login</h2>
+
+      <div class="form-grid">
+
+        <input
+          type="email"
+          id="loginEmail"
+          placeholder="Email"
+        />
+
+        <input
+          type="password"
+          id="loginSenha"
+          placeholder="Senha"
+        />
+
+      </div>
+
+      <button onclick="login()">
+        Entrar
+      </button>
+
+    </section>
+
+    <section class="card">
+
+      <h2>💘 Compatibilidade</h2>
+
+      <div class="compatibilidade-grid">
+
+        <select id="signo1">
+
+          <option>Áries</option>
+          <option>Touro</option>
+          <option>Gêmeos</option>
+          <option>Câncer</option>
+          <option>Leão</option>
+          <option>Virgem</option>
+          <option>Libra</option>
+          <option>Escorpião</option>
+          <option>Sagitário</option>
+          <option>Capricórnio</option>
+          <option>Aquário</option>
+          <option>Peixes</option>
+
+        </select>
+
+        <select id="signo2">
+
+          <option>Áries</option>
+          <option>Touro</option>
+          <option>Gêmeos</option>
+          <option>Câncer</option>
+          <option>Leão</option>
+          <option>Virgem</option>
+          <option>Libra</option>
+          <option>Escorpião</option>
+          <option>Sagitário</option>
+          <option>Capricórnio</option>
+          <option>Aquário</option>
+          <option>Peixes</option>
+
+        </select>
+
+      </div>
+
+      <button onclick="verCompatibilidade()">
+        Ver Compatibilidade
+      </button>
+
+      <div id="resultadoCompatibilidade"></div>
+
+    </section>
+
+    <section class="card">
+
+      <h2>🌌 Conheça os Signos</h2>
+
+      <div class="grid-signos">
+
+        <div
+          class="signo-item"
+          onclick="abrirModal('Áries')"
+        >
+
+          <img
+            src="assets/images/aries.png"
+            alt="Áries"
+          >
+
+          <p>Áries</p>
+
+        </div>
+
+        <div
+          class="signo-item"
+          onclick="abrirModal('Touro')"
+        >
+
+          <img
+            src="assets/images/touro.png"
+            alt="Touro"
+          >
+
+          <p>Touro</p>
+
+        </div>
+
+        <div
+          class="signo-item"
+          onclick="abrirModal('Gêmeos')"
+        >
+
+          <img
+            src="assets/images/gemeos.png"
+            alt="Gêmeos"
+          >
+
+          <p>Gêmeos</p>
+
+        </div>
+
+        <div
+          class="signo-item"
+          onclick="abrirModal('Câncer')"
+        >
+
+          <img
+            src="assets/images/cancer.png"
+            alt="Câncer"
+          >
+
+          <p>Câncer</p>
+
+        </div>
+
+        <div
+          class="signo-item"
+          onclick="abrirModal('Leão')"
+        >
+
+          <img
+            src="assets/images/leao.png"
+            alt="Leão"
+          >
+
+          <p>Leão</p>
+
+        </div>
+
+        <div
+          class="signo-item"
+          onclick="abrirModal('Virgem')"
+        >
+
+          <img
+            src="assets/images/virgem.png"
+            alt="Virgem"
+          >
+
+          <p>Virgem</p>
+
+        </div>
+
+        <div
+          class="signo-item"
+          onclick="abrirModal('Libra')"
+        >
+      
+          <img
+            src="assets/images/libra.png"
+            alt="Libra"
+          >
+        
+          <p>Libra</p>
+        
+        </div>
+
+        <div
+          class="signo-item"
+          onclick="abrirModal('Escorpião')"
+        >
+      
+          <img
+            src="assets/images/escorpiao.png"
+            alt="Escorpião"
+          >
+        
+          <p>Escorpião</p>
+        
+        </div>
+
+        <div
+          class="signo-item"
+          onclick="abrirModal('Sagitário')"
+        >
+      
+          <img
+            src="assets/images/sagitario.png"
+            alt="Sagitário"
+          >
+        
+          <p>Sagitário</p>
+        
+        </div>
+
+        <div
+          class="signo-item"
+          onclick="abrirModal('Capricórnio')"
+        >
+      
+          <img
+            src="assets/images/capricornio.png"
+            alt="Capricórnio"
+          >
+        
+          <p>Capricórnio</p>
+        
+        </div>
+
+        <div
+          class="signo-item"
+          onclick="abrirModal('Aquário')"
+        >
+      
+          <img
+            src="assets/images/aquario.png"
+            alt="Aquário"
+          >
+        
+          <p>Aquário</p>
+        
+        </div>
+
+        <div
+          class="signo-item"
+          onclick="abrirModal('Peixes')"
+          >
+        
+            <img
+              src="assets/images/peixes.png"
+              alt="Peixes"
+            >
+          
+            <p>Peixes</p>
+          
+          </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <div
+    class="modal"
+    id="modal"
+  >
+
+    <div class="modal-content">
+
+      <span
+        class="fechar"
+        onclick="fecharModal()"
+      >
+
+        ✖
+
+      </span>
+
+      <h2 id="modalTitulo"></h2>
+
+      <p id="modalTexto"></p>
+
+    </div>
+
+  </div>
+
+  <audio
+    id="musica"
+    loop
+  >
+
+    <source
+      src="musica.mp3"
+      type="audio/mpeg"
+    >
+
+  </audio>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>

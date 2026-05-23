@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "backend",
   "version": "1.0.0",
   "description": "",
@@ -102,4 +103,9 @@
     "url": "https://github.com/Tiago-Henrique-Oliveira/zodiacweb-backend/issues"
   },
   "homepage": "https://github.com/Tiago-Henrique-Oliveira/zodiacweb-backend#readme"
+=======
+  "dependencies": {
+    "dotenv": "^17.4.2"
+  }
+>>>>>>> 06b7e3b47cf33438fd3e39fee8c93fd16847299d
 }
