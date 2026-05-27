@@ -201,7 +201,7 @@ async function registrar() {
   const resposta =
     await fetch(
 
-      "https://zodiacweb-production.up.railway.app/cadastro",
+      "https://zodiacweb-production.up.railway.app/register",
 
       {
 
