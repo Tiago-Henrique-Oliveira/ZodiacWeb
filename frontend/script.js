@@ -201,7 +201,7 @@ async function registrar() {
   const resposta =
     await fetch(
 
-      "http://localhost:3000/register",
+      "https://zodiacweb-production.up.railway.app",
 
       {
 
@@ -249,7 +249,7 @@ async function login() {
   const resposta =
     await fetch(
 
-      "http://localhost:3000/login",
+      "https://zodiacweb-production.up.railway.app",
 
       {
 
