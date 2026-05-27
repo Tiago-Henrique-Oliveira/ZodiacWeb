@@ -201,7 +201,7 @@ async function registrar() {
   const resposta =
     await fetch(
 
-      "https://zodiacweb-production.up.railway.app",
+      "https://zodiacweb-production.up.railway.app/cadastro",
 
       {
 
@@ -249,7 +249,7 @@ async function login() {
   const resposta =
     await fetch(
 
-      "https://zodiacweb-production.up.railway.app",
+      "https://zodiacweb-production.up.railway.app/login",
 
       {
 
