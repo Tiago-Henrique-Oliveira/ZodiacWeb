@@ -1,5 +1,7 @@
 const express = require("express");
 
+const bcrypt = require("bcrypt");
+
 const mysql = require("mysql2");
 
 const cors = require("cors");
@@ -51,130 +53,71 @@ app.get("/", (req, res) => {
 
 });
 
-app.post("/register", (req, res) => {
+app.post("/register", async (req, res) => {
+    const { nome, email, senha, signo } = req.body;
+    
+    try {
+      const senhaHash = await bcrypt.hash(senha, 10);
 
-  const {
+      const sql = `
+          INSERT INTO usuarios
+          (nome, email, senha, signo)
+          VALUES (?, ?, ?, ?)
+      `;
 
-    nome,
-    email,
-    senha,
-    signo
+      db.query(sql, [nome, email, senhaHash, signo], (err) => {
+          if (err) {
+              console.log(err);
+              return res.status(500).json({ erro: "Erro ao cadastrar" });
+          }
 
-  } = req.body;
-
-  const sql =
-
-    `
-    INSERT INTO usuarios
-    (nome, email, senha, signo)
-    VALUES (?, ?, ?, ?)
-    `;
-
-  db.query(
-
-    sql,
-
-    [
-      nome,
-      email,
-      senha,
-      signo
-    ],
-
-    (erro, resultado) => {
-
-      if (erro) {
-
-        console.log(erro);
-
-        return res.status(500).json({
-
-          mensagem:
-            "Erro ao cadastrar!"
-
-        });
-
-      }
-
-      res.json({
-
-        mensagem:
-          "Cadastro realizado com sucesso!"
-
+          res.json({ mensagem: "Usuário cadastrado!" });
       });
 
+    } catch (erro) {
+        console.log(erro);
+        res.status(500).json({ erro: "Erro interno" });
     }
-
-  );
-
 });
 
-app.post("/login", (req, res) => {
+app.post("/login", async (req, res) => {
+    const { email, senha } = req.body;
 
-  const {
+    const sql = "SELECT * FROM usuarios WHERE email = ?";
 
-    email,
-    senha
+    db.query(sql, [email], async (err, results) => {
 
-  } = req.body;
+        if (err) {
+            return res.status(500).json({
+                erro: "Erro no servidor"
+            });
+        }
 
-  const sql =
+        if (results.length === 0) {
+            return res.status(401).json({
+                erro: "Usuário não encontrado"
+            });
+        }
 
-    `
-    SELECT * FROM usuarios
-    WHERE email = ?
-    AND senha = ?
-    `;
+        const usuario = results[0];
 
-  db.query(
+        const senhaCorreta = await bcrypt.compare(
+            senha,
+            usuario.senha
+        );
 
-    sql,
-
-    [
-      email,
-      senha
-    ],
-
-    (erro, resultado) => {
-
-      if (erro) {
-
-        console.log(erro);
-
-        return res.status(500).json({
-
-          mensagem:
-            "Erro no login!"
-
-        });
-
-      }
-
-      if (resultado.length > 0) {
+        if (!senhaCorreta) {
+            return res.status(401).json({
+                erro: "Senha incorreta"
+            });
+        }
 
         res.json({
-
-          mensagem:
-            "Login realizado!"
-
+            mensagem: "Login realizado!",
+            usuario
         });
 
-      }
-
-      else {
-
-        res.status(401).json({
-
-          mensagem:
-            "Email ou senha incorretos!"
-
-        });
-
-      }
-
-    }
-
-  );
+    });
 
 });
 
