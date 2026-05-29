@@ -1,51 +1,59 @@
 # 🌌 ZodiacWeb
 
-Projeto Full Stack inspirado em plataformas modernas, com foco em astrologia, signos do zodíaco, interação e experiência visual.
+Projeto Full Stack sobre astrologia, signos e horóscopo.
 
----
+## 🚀 Funcionalidades
 
-# 🚀 Funcionalidades
+- Cadastro de usuários
+- Login seguro com bcrypt
+- Quiz zodiacal
+- Compatibilidade entre signos
+- Horóscopo
+- Música ambiente
+- Tema astral animado
 
-✅ Cadastro de usuários  
-✅ Login com autenticação  
-✅ Senhas criptografadas com bcrypt  
-✅ Horóscopo dinâmico  
-✅ Compatibilidade entre signos  
-✅ Quiz zodiacal  
-✅ Dashboard com gráficos  
-✅ Dark mode  
-✅ Música ambiente  
-✅ Modal dos signos  
-✅ Descobrir signo pela data de nascimento  
-✅ Auto login com LocalStorage  
-✅ Layout responsivo  
-✅ Fundo animado  
+## 🛠 Tecnologias
 
----
-
-# 🛠️ Tecnologias
-
-## Frontend
-
-- HTML5
-- CSS3
+### Frontend
+- HTML
+- CSS
 - JavaScript
-- Chart.js
 
-## Backend
-
+### Backend
 - Node.js
 - Express
 - MySQL
-- bcrypt
-- cors
-- dotenv
 
----
+### Deploy
+- Railway
+- Netlify
 
-# 📦 Instalação
+## 🔐 Segurança
 
-## 1. Clone o projeto
+- Senhas criptografadas com bcrypt
 
-```bash
-git clone https://github.com/Tiago-Henrique-Oliveira/zodiacweb-backend.git
+## 🌍 Projeto Online
+
+Frontend:
+(https://app.netlify.com/projects/astonishing-treacle-c34e58/overview)
+
+Backend:
+(https://railway.com/project/5bc79c6c-b836-4f96-afe9-f703dbf35970?)
+
+## 📸 Screenshots
+
+![Print1](prints/print1.png)
+![Print2](prints/print2.png)
+![Print3](prints/print3.png)
+![Print4](prints/print4.png)
+![Print5](prints/print5.png)
+![Print6](prints/print6.png)
+![Print7](prints/print7.png)
+
+## Observação:
+
+- Você pode escolher a música de sua preferência, caso você queira alterar a música que eu escolhi!
+
+## 👨‍💻 Autor
+
+Tiago Henrique Moraes de Oliveira
